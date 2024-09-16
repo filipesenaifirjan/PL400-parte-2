@@ -1,0 +1,176 @@
+pergunta3 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_checkbox:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container2_1 As groupContainer.manualLayoutContainer:
+        Height: =Parent.Height-20
+        Width: =Parent.Width-20
+        X: =10
+        Y: =10
+        ZIndex: =1
+
+        Label1_4 As label:
+            Font: =Font.Arial
+            Height: =269
+            Size: =20
+            Text: |-
+                ="Você planeja implementar um componente de código de campo dentro do Power Apps component framework (PCF) para um aplicativo baseado em modelo.
+                3) O componente precisa que os valores de diferentes colunas de tabela funcionem corretamente.
+                Você precisa garantir que o componente possa acessar os dados necessários.
+                Quais são as duas opções que você deve usar? Cada resposta correta apresenta uma solução completa."
+            Width: =Parent.Width-30
+            X: =15
+            Y: =50
+            ZIndex: =1
+
+        Label2_2 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 3 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Button1_7 As button:
+            OnSelect: |-
+                =Reset(Checkbox1_4)&&
+                Reset(Checkbox1_5)&&
+                Reset(Checkbox1_6)&&
+                Reset(Checkbox1_7)&&
+                UpdateContext({VarPop_checkbox: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta2)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =330
+            Y: =690
+            ZIndex: =3
+
+        Button1_8 As button:
+            OnSelect: |-
+                =If
+                (
+                Checkbox1_7.Value And Checkbox1_5.Value
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_checkbox: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_checkbox: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))&&
+                Reset(Checkbox1_4)&&
+                Reset(Checkbox1_5)&&
+                Reset(Checkbox1_6)&&
+                Reset(Checkbox1_7)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =330
+            X: =508
+            Y: =690
+            ZIndex: =4
+
+        Button1_9 As button:
+            OnSelect: |-
+                =Reset(Checkbox1_7)&& Reset(Checkbox1_7)&&
+                UpdateContext({VarPop_checkbox: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta4)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =855
+            Y: =690
+            ZIndex: =5
+
+        Label3_2 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                =" ** Use uma API Web para carregar as colunas.
+                 ** Adicione propriedades ao manifesto e associe os campos correspondentes.
+                
+                Apps component framework (PCF) funcionam.
+                Se um componente precisar de informações adicionais da linha atual, haverá duas opções para acessar as informações: buscar as informações necessárias por meio da API Web ou adicionar propriedades ao manifesto, que serão associadas às colunas apropriadas ao configurar o componente."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =440
+            ZIndex: =6
+
+        Icon1_2 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_checkbox: true})
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =7
+
+        Checkbox1_4 As checkbox:
+            Text: |
+                ="Use as colunas."
+            Visible: =VarPop_checkbox
+            Width: =800
+            X: =30
+            Y: =300
+            ZIndex: =8
+
+        Checkbox1_5 As checkbox:
+            Text: |+
+                =" Use uma API Web para carregar as colunas."
+                
+            Visible: |
+                =VarPop_checkbox
+            Width: =800
+            X: =30
+            Y: =360
+            ZIndex: =9
+
+        Checkbox1_6 As checkbox:
+            Text: |
+                ="Adicione as colunas ao manifesto e deixe a estrutura buscar os valores."
+            Visible: |
+                =VarPop_checkbox
+            Width: =800
+            X: =30
+            Y: =420
+            ZIndex: =10
+
+        Checkbox1_7 As checkbox:
+            Text: |
+                ="Adicione propriedades ao manifesto e associe os campos correspondentes. "
+            Visible: |
+                =VarPop_checkbox
+            Width: =800
+            X: =30
+            Y: =480
+            ZIndex: =11
+

@@ -1,0 +1,145 @@
+pergunta15 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_7 As groupContainer.manualLayoutContainer:
+        Height: =Parent.Height -20 
+        PaddingTop: =
+        Width: =Parent.Width -20
+        X: =10
+        Y: =10
+        ZIndex: =1
+
+        Label2_14 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 15 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =1
+
+        Label1_16 As label:
+            Font: =Font.Arial
+            Height: =280
+            Size: =20
+            Text: ="15) O que é o ciclo de vida de um componente de código da PCF no Power Platform?   "
+            Width: =Parent.Width -30
+            X: =15
+            Y: =73
+            ZIndex: =2
+
+        Radio1_7 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =206
+            Items: |-
+                =[
+                "A) Um ciclo que nunca termina e mantém o componente em execução   "
+                ,
+                "B) Um ciclo que controla o uso de recursos de hardware  "
+                ,
+                "C) Um ciclo que controla a implantação e a execução do componente  "
+                ,
+                "D) Um ciclo que determina quando o componente é criado e destruído   "
+                ]
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =403
+            ZIndex: =3
+
+        Button1_43 As button:
+            OnSelect: |-
+                =Reset(Radio1_7)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta14)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =330
+            Y: =690
+            ZIndex: =4
+
+        Button1_44 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_7
+                .Selected.Value=
+                "C) Um ciclo que controla a implantação e a execução do componente  "
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =330
+            X: =508
+            Y: =690
+            ZIndex: =5
+
+        Button1_45 As button:
+            OnSelect: |-
+                =Reset(Radio1_7)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta16)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =855
+            Y: =690
+            ZIndex: =6
+
+        Label3_14 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="C) Um ciclo que controla a implantação e a execução do componente  
+                
+                O ciclo de vida de um componente de código da PCF (PowerApps Component Framework) no Power Platform refere-se ao conjunto de etapas que gerenciam a criação, a execução e a destruição do componente durante sua utilização em aplicativos. Este ciclo abrange eventos como a inicialização do componente, sua renderização, a atualização em resposta a mudanças de dados e, finalmente, a limpeza quando o componente não é mais necessário. Esse controle é crucial para garantir o desempenho eficiente e a gestão adequada dos recursos durante a vida útil do componente dentro da aplicação."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =416
+            ZIndex: =7
+
+        Icon1_14 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1_7)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

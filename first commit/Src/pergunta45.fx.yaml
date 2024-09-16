@@ -1,0 +1,148 @@
+pergunta45 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_37 As groupContainer.manualLayoutContainer:
+        Height: =Parent.Height -20 
+        PaddingTop: =
+        Width: =Parent.Width -20
+        X: =10
+        Y: =10
+        ZIndex: =1
+
+        Label2_44 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 45 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =1
+
+        Label1_46 As label:
+            Font: =Font.Arial
+            Height: =280
+            Size: =20
+            Text: ="45) Você cria um aplicativo do Power Apps que se integra ao Dynamics 365 Customer Service.Você atualiza o aplicativo e executa o verificador de soluções na solução original. Você recebe um erro informando que o verificador de soluções não pode exportar a solução.Você precisa determinar a causa principal do problema.Qual é a causa principal?"
+            Width: =Parent.Width -30
+            X: =15
+            Y: =57
+            ZIndex: =2
+
+        Radio1_37 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =206
+            Items: |-
+                =[
+                "A) A solução original está bloqueada porque há um patch dependente."
+                ,
+                "B) A solução não foi exportada antes de executar o verificador de soluções."
+                ,
+                "C) O ambiente está no modo Administrador"
+                ,
+                "D) O verificador de soluções não pode verificar soluções padrão."
+                ]
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =387
+            ZIndex: =3
+
+        Button1_133 As button:
+            OnSelect: |-
+                =Reset(Radio1_37)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta44)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =330
+            Y: =690
+            ZIndex: =4
+
+        Button1_134 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_37
+                .Selected.Value=
+                "A) A solução original está bloqueada porque há um patch dependente."
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =330
+            X: =508
+            Y: =690
+            ZIndex: =5
+
+        Button1_135 As button:
+            OnSelect: |-
+                =Reset(Radio1_37)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta46)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =855
+            Y: =690
+            ZIndex: =6
+
+        Label3_44 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="A) A solução original está bloqueada porque há um patch dependente.
+                
+                O Solution Checker falha ao exportar soluções corrigidas.
+                Se uma solução tiver um patch aplicado, o Solution Checker falhará ao exportar a solução para análise. Quando uma solução tiver um patch aplicado, a solução original será bloqueada e não poderá ser alterada ou exportada enquanto houver patches dependentes na organização que identifiquem a solução como a solução pai.
+                Para resolver esse problema, clone a solução para que todos os patches relacionados à solução sejam incluídos na solução recém-criada. Isso desbloqueia a solução e permite que ela seja exportada do sistema.
+                "
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_44 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1_37)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

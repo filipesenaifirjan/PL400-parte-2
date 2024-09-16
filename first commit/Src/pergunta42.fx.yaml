@@ -1,0 +1,148 @@
+pergunta42 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_34 As groupContainer.manualLayoutContainer:
+        Height: =Parent.Height -20 
+        PaddingTop: =
+        Width: =Parent.Width -20
+        X: =10
+        Y: =10
+        ZIndex: =1
+
+        Label2_41 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 42 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =1
+
+        Label1_43 As label:
+            Font: =Font.Arial
+            Height: =280
+            Size: =20
+            Text: |-
+                ="42) Uma organização implementa o Dynamics 365 Sales.
+                Você precisa acionar uma regra de negócios quando o formulário principal for salvo.
+                O que você deve fazer?"
+            Width: =Parent.Width -30
+            X: =15
+            Y: =57
+            ZIndex: =2
+
+        Radio1_34 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =206
+            Items: |-
+                =[
+                "A) Escreva uma regra de negócios para disparar em uma alteração do campo ModifiedOn. "
+                ,
+                "B) Defina o escopo da regra de negócios como um formulário específico em que a regra de negócios é acionada. "
+                ,
+                "C) Defina o escopo da regra de negócios como Todos os Formulários. "
+                ,
+                "D)Defina o escopo da regra de negócios como Entidade. "
+                ]
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =387
+            ZIndex: =3
+
+        Button1_124 As button:
+            OnSelect: |-
+                =Reset(Radio1_34)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta41)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =330
+            Y: =690
+            ZIndex: =4
+
+        Button1_125 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_34
+                .Selected.Value=
+                "D)Defina o escopo da regra de negócios como Entidade. "
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =330
+            X: =508
+            Y: =690
+            ZIndex: =5
+
+        Button1_126 As button:
+            OnSelect: |-
+                =Reset(Radio1_34)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta43)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =855
+            Y: =690
+            ZIndex: =6
+
+        Label3_41 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="D)Defina o escopo da regra de negócios como Entidade. 
+                
+                Justificativa: Definir o escopo da regra de negócios como “Todos os Formulários” garante que a regra seja aplicada a qualquer formulário associado à entidade, independentemente de qual formulário específico está sendo usado. Isso é essencial para garantir que a lógica de negócios seja acionada sempre que o formulário principal for salvo, proporcionando consistência e integridade nos dados. As outras opções não garantem que a regra de negócios será acionada em todos os cenários de salvamento do formulário principal."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_41 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1_34)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

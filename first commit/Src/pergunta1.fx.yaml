@@ -1,0 +1,146 @@
+pergunta1 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1 As groupContainer.manualLayoutContainer:
+        Height: =Parent.Height -20 
+        PaddingTop: =
+        Width: =Parent.Width -20
+        X: =10
+        Y: =10
+        ZIndex: =1
+
+        Label2 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 1 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =1
+
+        Label1_2 As label:
+            Font: =Font.Arial
+            Height: =305
+            Size: =20
+            Text: |-
+                ="1) Uma empresa usa campos de rollup do Common Data Service para calcular a exposição de seguro e perfis de risco para clientes.
+                Os usuários relatam que o sistema não atualiza os valores para os campos de rollup quando novas apólices de seguro são escritas.
+                Você precisa recalcular o valor dos campos de rollup imediatamente após a criação de uma apólice.
+                O que você deve fazer?"
+            Width: =Parent.Width -30
+            X: =15
+            Y: =89
+            ZIndex: =2
+
+        Radio1 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =206
+            Items: |-
+                =[
+                "A) Crie novos campos na entidade do cliente para exposição e risco de seguro. Escreva um processo de fluxo de trabalho que seja acionado quando um novo registro de apólice for criado para calcular a soma de valores dos registros de apólice."
+                ,
+                "B)  Atualize o trabalho do campo de cálculo em massa para ser acionado quando um novo registro de política for criado."
+                ,
+                "C) Altere a frequência do trabalho recorrente Calcular campo de rollup de a cada hora para a cada cinco minutos."
+                ,
+                "D) Crie um plug-in que use o método CalculateRollupFieldRequest para o campo rollup. Configure uma etapa no evento Create para a entidade de política para este plug-in."
+                ]
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =403
+            ZIndex: =3
+
+        Button1_1 As button:
+            OnSelect: |-
+                =Reset(Radio1)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(home)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =330
+            Y: =690
+            ZIndex: =4
+
+        Button1_2 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1
+                .Selected.Value=
+                "D) Adicione o aplicativo de histórico de manutenção ao painel do Power BI."
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =330
+            X: =508
+            Y: =690
+            ZIndex: =5
+
+        Button1_3 As button:
+            OnSelect: |-
+                =Reset(Radio1)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta2)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =855
+            Y: =690
+            ZIndex: =6
+
+        Label3 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: ="D. Crie um plug-in que use o método CalculateRollupFieldRequest para o campo rollup. Configure uma etapa no evento Create para a entidade de política para este plug-in. Os campos rollup no Common Data Service são usados ​​para calcular valores agregados como a soma ou contagem de registros relacionados. Eles são calculados de forma assíncrona por meio do trabalho Calculate Rollup Field. No entanto, neste cenário, os usuários exigem que os campos rollup sejam atualizados imediatamente após a criação de uma política. Para atingir esse requisito, um plug-in que usa o método CalculateRollupFieldRequest para o campo rollup pode ser criado. Este plug-in pode ser configurado para disparar no evento Create para a entidade de política e atualizará os campos rollup imediatamente após a criação de uma política."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =464
+            ZIndex: =7
+
+        Icon1 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

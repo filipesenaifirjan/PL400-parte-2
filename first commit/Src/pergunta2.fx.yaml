@@ -1,0 +1,192 @@
+pergunta2 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_checkbox:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container2 As groupContainer.manualLayoutContainer:
+        Height: =Parent.Height-20
+        Width: =Parent.Width-20
+        X: =10
+        Y: =10
+        ZIndex: =1
+
+        Label1_3 As label:
+            Font: =Font.Arial
+            Height: =269
+            Size: =20
+            Text: |-
+                ="4) Você está criando integrações de sistemas externos que leem e gravam dados em tabelas personalizadas no Microsoft Dataverse. Você tem 10 sistemas externos.
+                Você precisa gerenciar o acesso ao Dataverse sem exigir senhas ou a necessidade de lidar com a autenticação multifator.
+                Quais três etapas você deve executar? Cada resposta correta apresenta uma parte da solução. Escolha três."
+            Width: =Parent.Width-30
+            X: =15
+            Y: =50
+            ZIndex: =1
+
+        Label2_1 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 2 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Button1_4 As button:
+            OnSelect: |-
+                =Reset(Checkbox1)&&
+                Reset(Checkbox1_1)&&
+                Reset(Checkbox1_2)&&
+                Reset(Checkbox1_3)&&
+                UpdateContext({VarPop_checkbox: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta1)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =330
+            Y: =690
+            ZIndex: =3
+
+        Button1_5 As button:
+            OnSelect: |-
+                =If
+                (
+                Checkbox1_1.Value And Checkbox1_2.Value And Checkbox2.Value
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_checkbox: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_checkbox: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))&&
+                Reset(Checkbox1)&&
+                Reset(Checkbox1_1)&&
+                Reset(Checkbox1_2)&&
+                Reset(Checkbox1_3)&&
+                Reset(Checkbox2)&&
+                Reset(Checkbox3)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =330
+            X: =508
+            Y: =690
+            ZIndex: =4
+
+        Button1_6 As button:
+            OnSelect: |-
+                =Reset(Checkbox1_3)&& Reset(Checkbox1_3)&&
+                UpdateContext({VarPop_checkbox: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta3)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =855
+            Y: =690
+            ZIndex: =5
+
+        Label3_1 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="Você deve registrar um aplicativo no Microsoft Entra ID porque os registros de aplicativo não exigem uma senha e são excluídos da autenticação multifator. Você deve criar um usuário de aplicativo no Dataverse selecionando o registro do aplicativo. Você pode criar um número ilimitado de usuários do aplicativo. Você deve criar e selecionar uma função de segurança personalizada para o usuário do aplicativo. A função de segurança atribuída a um usuário do aplicativo para uma integração deve conter apenas os privilégios necessários para executar a integração e não deve permitir o logon no aplicativo.
+                Os usuários não interativos exigem uma senha para autenticação e há um limite de sete usuários não interativos por ambiente. Os aplicativos empresariais não podem ser usados para criar usuários de aplicativos. A função Usuário Básico tem muitos privilégios acima do necessário para executar a integração e, além disso, não pode ser modificada para adicionar privilégios para tabelas personalizadas."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =450
+            ZIndex: =6
+
+        Icon1_1 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_checkbox: true})
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =7
+
+        Checkbox1 As checkbox:
+            Text: |
+                ="A)  Crie usuários não interativos no Dataverse."
+            Visible: =VarPop_checkbox
+            Width: =900
+            X: =30
+            Y: =300
+            ZIndex: =8
+
+        Checkbox1_1 As checkbox:
+            Text: |+
+                ="B) Crie registros de aplicativo no Microsoft Entra ID."
+                
+            Visible: |
+                =VarPop_checkbox
+            Width: =900
+            X: =30
+            Y: =360
+            ZIndex: =9
+
+        Checkbox1_2 As checkbox:
+            Text: |
+                ="C) Crie usuários de aplicativos no Dataverse."
+            Visible: |
+                =VarPop_checkbox
+            Width: =900
+            X: =30
+            Y: =420
+            ZIndex: =10
+
+        Checkbox1_3 As checkbox:
+            Text: |
+                ="D) Crie aplicativos empresariais no Microsoft Entra ID."
+            Visible: |
+                =VarPop_checkbox
+            Width: =900
+            X: =30
+            Y: =480
+            ZIndex: =11
+
+        Checkbox2 As checkbox:
+            Text: ="E) Crie e selecione funções de segurança personalizadas."
+            Visible: |
+                =VarPop_checkbox
+            Width: =900
+            X: =30
+            Y: =540
+            ZIndex: =12
+
+        Checkbox3 As checkbox:
+            Text: ="F) Selecione a função de segurança do usuário básico."
+            Visible: |
+                =VarPop_checkbox
+            Width: =900
+            X: =30
+            Y: =600
+            ZIndex: =13
+

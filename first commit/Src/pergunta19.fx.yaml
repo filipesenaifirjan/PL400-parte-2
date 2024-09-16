@@ -1,0 +1,145 @@
+pergunta19 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_11 As groupContainer.manualLayoutContainer:
+        Height: =Parent.Height -20 
+        PaddingTop: =
+        Width: =Parent.Width -20
+        X: =10
+        Y: =10
+        ZIndex: =1
+
+        Label2_18 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 19 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =1
+
+        Label1_20 As label:
+            Font: =Font.Arial
+            Height: =280
+            Size: =20
+            Text: ="19) Como você pode desenvolver um plug-in que implementa a lógica de negócios no Power Platform? "
+            Width: =Parent.Width -30
+            X: =15
+            Y: =65
+            ZIndex: =2
+
+        Radio1_11 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =206
+            Items: |-
+                =[
+                "A) Não é possível desenvolver plug-ins que implementam lógica de negócios  "
+                ,
+                "B) Usando tanto código C# quanto JavaScript  "
+                ,
+                "C) Usando apenas código JavaScript "
+                ,
+                "D) Usando apenas código C#  "
+                ]
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =403
+            ZIndex: =3
+
+        Button1_55 As button:
+            OnSelect: |-
+                =Reset(Radio1_11)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta18)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =330
+            Y: =690
+            ZIndex: =4
+
+        Button1_56 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_11
+                .Selected.Value=
+                "D) Usando apenas código C#  "
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =330
+            X: =508
+            Y: =690
+            ZIndex: =5
+
+        Button1_57 As button:
+            OnSelect: |-
+                =Reset(Radio1_11)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta20)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =855
+            Y: =690
+            ZIndex: =6
+
+        Label3_18 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="D) Usando apenas código C#  
+                
+                Os plug-ins no Power Platform são desenvolvidos exclusivamente em C#, pois essa linguagem permite a criação de lógica de negócios robusta que pode ser executada no lado do servidor. Os plug-ins são usados para estender as funcionalidades do Dataverse, permitindo que os desenvolvedores implementem regras e comportamentos personalizados que respondem a eventos específicos, como a criação, atualização ou exclusão de registros. Embora o JavaScript possa ser utilizado para a lógica do lado do cliente, a implementação de plug-ins requer a utilização de C# para garantir a execução no ambiente do servidor do Power Platform."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_18 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1_11)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

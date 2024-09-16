@@ -1,0 +1,145 @@
+pergunta25 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_17 As groupContainer.manualLayoutContainer:
+        Height: =Parent.Height -20 
+        PaddingTop: =
+        Width: =Parent.Width -20
+        X: =10
+        Y: =10
+        ZIndex: =1
+
+        Label2_24 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 25 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =1
+
+        Label1_26 As label:
+            Font: =Font.Arial
+            Height: =280
+            Size: =20
+            Text: ="25) Qual é o propósito de configurar uma mensagem de API Personalizada do Dataverse no Power Platform?"
+            Width: =Parent.Width -30
+            X: =15
+            Y: =57
+            ZIndex: =2
+
+        Radio1_17 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =206
+            Items: |-
+                =[
+                "A) Reduzir a segurança do aplicativo "
+                ,
+                "B) Aumentar a complexidade do aplicativo "
+                ,
+                "C) Expor funcionalidades personalizadas do Dataverse como uma API pública "
+                ,
+                "D) Adicionar funcionalidades de terceiros ao aplicativo"
+                ]
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =387
+            ZIndex: =3
+
+        Button1_73 As button:
+            OnSelect: |-
+                =Reset(Radio1_17)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta24)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =330
+            Y: =690
+            ZIndex: =4
+
+        Button1_74 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_17
+                .Selected.Value=
+                "C) Expor funcionalidades personalizadas do Dataverse como uma API pública "
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =330
+            X: =508
+            Y: =690
+            ZIndex: =5
+
+        Button1_75 As button:
+            OnSelect: |-
+                =Reset(Radio1_17)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta26)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =855
+            Y: =690
+            ZIndex: =6
+
+        Label3_24 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="C) Expor funcionalidades personalizadas do Dataverse como uma API pública 
+                
+                Configurar uma mensagem de API Personalizada no Dataverse permite que os desenvolvedores exponham funcionalidades específicas como serviços acessíveis por meio de uma API. Isso facilita a integração de soluções personalizadas com outros aplicativos e serviços, permitindo que consumidores externos ou internos interajam com a lógica de negócios implementada no Dataverse. Essa abordagem promove a extensibilidade e a reutilização de funcionalidades em diferentes contextos, tornando o Dataverse mais flexível e poderoso na construção de soluções."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_24 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1_17)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

@@ -1,0 +1,149 @@
+pergunta44 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_36 As groupContainer.manualLayoutContainer:
+        Height: =Parent.Height -20 
+        PaddingTop: =
+        Width: =Parent.Width -20
+        X: =10
+        Y: =10
+        ZIndex: =1
+
+        Label2_43 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 44 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =1
+
+        Label1_45 As label:
+            Font: =Font.Arial
+            Height: =280
+            Size: =20
+            Text: |-
+                ="44)Você está criando uma nova página para um portal do Power Apps.
+                Você precisa exibir dados do Microsoft Dataverse na página.
+                O que você deve usar?"
+            Width: =Parent.Width -30
+            X: =15
+            Y: =57
+            ZIndex: =2
+
+        Radio1_36 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =206
+            Items: |-
+                =[
+                "A) Liquid "
+                ,
+                "B) CSS "
+                ,
+                "C) iFrame "
+                ,
+                "D) Inicialização "
+                ]
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =387
+            ZIndex: =3
+
+        Button1_130 As button:
+            OnSelect: |-
+                =Reset(Radio1_36)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta43)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =330
+            Y: =690
+            ZIndex: =4
+
+        Button1_131 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_36
+                .Selected.Value=
+                "A) Liquid "
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =330
+            X: =508
+            Y: =690
+            ZIndex: =5
+
+        Button1_132 As button:
+            OnSelect: |-
+                =Reset(Radio1_36)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta45)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =855
+            Y: =690
+            ZIndex: =6
+
+        Label3_43 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="D) Liquid 
+                
+                Liquid é uma linguagem de modelo de código aberto que é integrada nativamente aos portais do Microsoft Power Apps. Ela atua como uma ponte entre o Dataverse e a saída HTML ou de texto que é enviada ao navegador. O Liquid pode ser usado para adicionar conteúdo dinâmico às páginas e criar uma variedade de modelos personalizados. Além disso, o Liquid fornece acesso apenas aos dados e operações que são explicitamente permitidos pelos portais.
+                "
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_43 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1_36)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

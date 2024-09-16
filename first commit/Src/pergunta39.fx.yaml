@@ -1,0 +1,150 @@
+pergunta39 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_31 As groupContainer.manualLayoutContainer:
+        Height: =Parent.Height -20 
+        PaddingTop: =
+        Width: =Parent.Width -20
+        X: =10
+        Y: =10
+        ZIndex: =1
+
+        Label2_38 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 39 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =1
+
+        Label1_40 As label:
+            Font: =Font.Arial
+            Height: =280
+            Size: =20
+            Text: |-
+                ="39) Você está desenvolvendo uma solução Power Platform para uma prática médica. Você cria uma tabela personalizada chamada Médicos para registrar detalhes sobre os médicos que trabalham no consultório médico.
+                Você deve ser capaz de anexar uma cópia em PDF da licença médica de um médico à linha de cada médico.
+                Você precisa configurar a tabela.
+                O que você deve fazer?"
+            Width: =Parent.Width -30
+            X: =15
+            Y: =57
+            ZIndex: =2
+
+        Radio1_31 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =206
+            Items: |-
+                =[
+                "A) Crie um fluxo do Power Automate para adicionar anexos. "
+                ,
+                "B) Navegue até Opções de tabela e ative os anexos. "
+                ,
+                "C) Navegue até Opções de coluna e ative os anexos. "
+                ,
+                "D) Crie relações entre a tabela Doutor e a tabela Notas. "
+                ]
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =387
+            ZIndex: =3
+
+        Button1_115 As button:
+            OnSelect: |-
+                =Reset(Radio1_31)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta38)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =330
+            Y: =690
+            ZIndex: =4
+
+        Button1_116 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_31
+                .Selected.Value=
+                "C) Navegue até Opções de coluna e ative os anexos. "
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =330
+            X: =508
+            Y: =690
+            ZIndex: =5
+
+        Button1_117 As button:
+            OnSelect: |-
+                =Reset(Radio1_31)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta40)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =855
+            Y: =690
+            ZIndex: =6
+
+        Label3_38 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="C) Navegue até Opções de coluna e ative os anexos. 
+                
+                Configuração de Tabela: A configuração de anexos é uma funcionalidade que se aplica à tabela como um todo, não a uma coluna específica. Isso permite que qualquer linha na tabela tenha a capacidade de armazenar arquivos anexados.
+                Funcionalidade de Anexos: Ao ativar os anexos na tabela, você está habilitando uma funcionalidade que permite adicionar arquivos, como PDFs, diretamente às linhas da tabela. Isso é essencial para armazenar documentos importantes, como a licença médica dos médicos."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_38 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1_31)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

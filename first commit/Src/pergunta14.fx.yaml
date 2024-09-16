@@ -1,0 +1,145 @@
+pergunta14 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_6 As groupContainer.manualLayoutContainer:
+        Height: =Parent.Height -20 
+        PaddingTop: =
+        Width: =Parent.Width -20
+        X: =10
+        Y: =10
+        ZIndex: =1
+
+        Label2_13 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 14 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =1
+
+        Label1_15 As label:
+            Font: =Font.Arial
+            Height: =280
+            Size: =20
+            Text: ="14) Como o código JavaScript é usado no Power Platform?   "
+            Width: =Parent.Width -30
+            X: =15
+            Y: =73
+            ZIndex: =2
+
+        Radio1_6 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =206
+            Items: |-
+                =[
+                "A) Para criar funções de segurança "
+                ,
+                "B) Para aplicar a lógica de negócios do lado do cliente "
+                ,
+                "C) Para desenvolver plug-ins do Dataverse "
+                ,
+                "D) Para criar relatórios de desempenho "
+                ]
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =403
+            ZIndex: =3
+
+        Button1_40 As button:
+            OnSelect: |-
+                =Reset(Radio1_6)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta13)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =330
+            Y: =690
+            ZIndex: =4
+
+        Button1_41 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_6
+                .Selected.Value=
+                "B) Para aplicar a lógica de negócios do lado do cliente "
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =330
+            X: =508
+            Y: =690
+            ZIndex: =5
+
+        Button1_42 As button:
+            OnSelect: |-
+                =Reset(Radio1_6)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta15)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =855
+            Y: =690
+            ZIndex: =6
+
+        Label3_13 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="B) Para aplicar a lógica de negócios do lado do cliente 
+                
+                No Power Platform, o código JavaScript é amplamente utilizado para implementar a lógica de negócios no lado do cliente, permitindo que os desenvolvedores adicionem interações dinâmicas e personalizadas nas interfaces do usuário. Isso inclui validar dados antes de serem enviados ao servidor, manipular a interface do usuário em resposta a ações do usuário e gerenciar eventos em formulários. A utilização de JavaScript melhora a experiência do usuário, tornando os aplicativos mais responsivos e interativos, sem a necessidade de comunicação constante com o servidor."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =416
+            ZIndex: =7
+
+        Icon1_13 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1_6)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

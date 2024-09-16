@@ -1,0 +1,148 @@
+pergunta5 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_1 As groupContainer.manualLayoutContainer:
+        Height: =Parent.Height -20 
+        PaddingTop: =
+        Width: =Parent.Width -20
+        X: =10
+        Y: =10
+        ZIndex: =1
+
+        Label2_4 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 5 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =1
+
+        Label1_6 As label:
+            Font: =Font.Arial
+            Height: =305
+            Size: =20
+            Text: |-
+                ="5) Desenvolva um aplicativo de tela para gerenciar solicitações de folga e de férias. O aplicativo usa o Microsoft Dataverse como a fonte de dados. A tabela Solicitação no modelo de dados tem uma coluna de pesquisa que faz referência a uma tabela chamada AbsenceType.
+                Adicione um controle de lista suspensa ao aplicativo. Você precisa garantir que os usuários só tenham permissão para selecionar tipos de ausência ativos.
+                O que você deve fazer?"
+            Width: =Parent.Width -30
+            X: =15
+            Y: =89
+            ZIndex: =2
+
+        Radio1_1 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =206
+            Items: |-
+                =[
+                "A) Adicione a seguinte expressão PowerFx à propriedade onSelect da lista suspensa: Filter(‘Absence Types’, ‘Absence Types (Views)’.’Active Absence Types’)"
+                ,
+                "B)  Adicione a seguinte expressão PowerFx à propriedade onSelect da lista suspensa: ‘Absence Types’"
+                ,
+                "C) Adicione a seguinte expressão PowerFx à propriedade Items da lista suspensa: Filter(‘Absence Types’, ‘Absence Types (Views)’.’Active Absence Types’)"
+                ,
+                "D) Adicione a seguinte expressão PowerFx à propriedade Items da lista suspensa: ‘Absence Types’"
+                ]
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =403
+            ZIndex: =3
+
+        Button1_13 As button:
+            OnSelect: |-
+                =Reset(Radio1_1)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta4)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =330
+            Y: =690
+            ZIndex: =4
+
+        Button1_14 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_1
+                .Selected.Value=
+                "C) Adicione a seguinte expressão PowerFx à propriedade Items da lista suspensa: Filter(‘Absence Types’, ‘Absence Types (Views)’.’Active Absence Types’)"
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =330
+            X: =508
+            Y: =690
+            ZIndex: =5
+
+        Button1_15 As button:
+            OnSelect: |-
+                =Reset(Radio1_1)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta6)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =855
+            Y: =690
+            ZIndex: =6
+
+        Label3_4 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="C) Adicione a seguinte expressão PowerFx à propriedade Items da lista suspensa: Filter(‘Absence Types’, ‘Absence Types (Views)’.’Active Absence Types’)
+                
+                Adicionar a expressão PowerFx à propriedade Items da lista suspensa com o segmento de código que inclui ‘Active Absence Types’ filtraria a lista de Tipos de Ausência para aqueles incluídos na exibição 'Tipos de Ausência Ativos'. Adicionar as expressões PowerFx à propriedade onSelect não se aplicaria à propriedade Items. Adicionar a expressão PowerFx com o segmento de código que inclui apenas ‘Absence Types’ mostraria todas as linhas de Tipo de Ausência, independentemente de estarem ativas ou não."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =424
+            ZIndex: =7
+
+        Icon1_4 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1_1)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

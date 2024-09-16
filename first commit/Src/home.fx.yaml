@@ -1,0 +1,40 @@
+home As screen:
+
+    Label1 As label:
+        Align: =Align.Center
+        Height: =130
+        Size: =40
+        Text: ="Guia de estudos PL400"
+        Width: =1366
+        Y: =150
+        ZIndex: =1
+
+    Label1_1 As label:
+        Align: =Align.Center
+        Height: =123
+        Size: =40
+        Text: =" Parte 2"
+        Width: =1366
+        Y: =520
+        ZIndex: =2
+
+    Button1 As button:
+        Fill: =RGBA(1, 169, 152, 1)
+        OnSelect: =Navigate(pergunta1)
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =0
+        RadiusTopRight: =0
+        Text: ="Iniciar"
+        Width: =200
+        X: =583
+        Y: =328
+        ZIndex: =3
+
+    Image1 As image:
+        Height: =150
+        Image: ='3af164d418aed29022183cb11387f2ab'
+        Width: =204
+        X: =1161
+        ZIndex: =4
+

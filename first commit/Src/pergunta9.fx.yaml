@@ -1,0 +1,192 @@
+pergunta9 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_checkbox:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container2_5 As groupContainer.manualLayoutContainer:
+        Height: =Parent.Height-20
+        Width: =Parent.Width-20
+        X: =10
+        Y: =10
+        ZIndex: =1
+
+        Label1_10 As label:
+            Font: =Font.Arial
+            Height: =269
+            Size: =20
+            Text: |-
+                ="9) Você está desenvolvendo um novo componente de código interativo usando o Power Apps component framework.
+                Você precisa garantir que o valor de saída fornecido em uma caixa de texto seja atualizado em outros componentes.
+                Quais são as duas ações que você deve executar? Cada resposta correta apresenta uma parte da solução. Escolha dois."
+            Width: =Parent.Width-30
+            X: =15
+            Y: =34
+            ZIndex: =1
+
+        Label2_8 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 9 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Button1_25 As button:
+            OnSelect: |-
+                =Reset(Checkbox1_20)&&
+                Reset(Checkbox1_21)&&
+                Reset(Checkbox1_22)&&
+                Reset(Checkbox1_23)&&
+                UpdateContext({VarPop_checkbox: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta8)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =330
+            Y: =690
+            ZIndex: =3
+
+        Button1_26 As button:
+            OnSelect: |-
+                =If
+                (
+                Checkbox1_20.Value And Checkbox2_3.Value
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_checkbox: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_checkbox: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))&&
+                Reset(Checkbox1_20)&&
+                Reset(Checkbox1_21)&&
+                Reset(Checkbox1_22)&&
+                Reset(Checkbox1_23)&&
+                Reset(Checkbox3_3)&&
+                Reset(Checkbox2_3)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =330
+            X: =508
+            Y: =690
+            ZIndex: =4
+
+        Button1_27 As button:
+            OnSelect: |-
+                =Reset(Checkbox1_23)&& Reset(Checkbox1_23)&&
+                UpdateContext({VarPop_checkbox: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta10)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =855
+            Y: =690
+            ZIndex: =5
+
+        Label3_8 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =233
+            Text: |-
+                ="Quando um valor é alterado em um componente de código interativo, o manipulador de eventos registrado é invocado. Para garantir que o novo valor fornecido no controle de saída seja notificado para o host, precisamos invocar o método notifyOutputChanged do método do manipulador de eventos. Depois que o método notifyOutputChanged for invocado, o método updateView será invocado pelo runtime de hospedagem depois de validar o valor de saída.
+                O método updateView é invocado pela estrutura quando qualquer valor no recipiente de propriedades do componente é alterado. O método init é usado para inicializar a instância do componente e não pode ser usado para obter o valor atualizado em uma caixa de texto invocando o método notifyOutputChanged. Você não precisa criar um manipulador de eventos para os outros componentes para o evento de alteração porque o novo valor seria definido usando o método updateView pelo runtime."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =6
+
+        Icon1_8 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_checkbox: true})
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =7
+
+        Checkbox1_20 As checkbox:
+            Text: |
+                ="A)  Crie um manipulador de eventos para a caixa de texto para seu evento de alteração."
+            Visible: =VarPop_checkbox
+            Width: =900
+            X: =30
+            Y: =300
+            ZIndex: =8
+
+        Checkbox1_21 As checkbox:
+            Text: |+
+                ="B) Crie um manipulador de eventos para os outros componentes do seu evento de alteração."
+                
+            Visible: |
+                =VarPop_checkbox
+            Width: =900
+            X: =30
+            Y: =360
+            ZIndex: =9
+
+        Checkbox1_22 As checkbox:
+            Text: |
+                ="C) Invoque o método notifyOutputChanged do método init."
+            Visible: |
+                =VarPop_checkbox
+            Width: =900
+            X: =30
+            Y: =420
+            ZIndex: =10
+
+        Checkbox1_23 As checkbox:
+            Text: |
+                ="D) Invoque o método updateView do manipulador de eventos."
+            Visible: |
+                =VarPop_checkbox
+            Width: =900
+            X: =30
+            Y: =480
+            ZIndex: =11
+
+        Checkbox2_3 As checkbox:
+            Text: ="E) Invoque o método notifyOutputChanged do manipulador de eventos."
+            Visible: |
+                =VarPop_checkbox
+            Width: =900
+            X: =30
+            Y: =540
+            ZIndex: =12
+
+        Checkbox3_3 As checkbox:
+            Text: ="F) Invoque o método notifyOutputChanged do método updateView."
+            Visible: |
+                =VarPop_checkbox
+            Width: =900
+            X: =30
+            Y: =600
+            ZIndex: =13
+

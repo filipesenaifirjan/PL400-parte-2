@@ -1,0 +1,145 @@
+pergunta20 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_12 As groupContainer.manualLayoutContainer:
+        Height: =Parent.Height -20 
+        PaddingTop: =
+        Width: =Parent.Width -20
+        X: =10
+        Y: =10
+        ZIndex: =1
+
+        Label2_19 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 20 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =1
+
+        Label1_21 As label:
+            Font: =Font.Arial
+            Height: =280
+            Size: =20
+            Text: ="20) O que é o contexto de execução de plug-ins do Dataverse no Power Platform? "
+            Width: =Parent.Width -30
+            X: =15
+            Y: =65
+            ZIndex: =2
+
+        Radio1_12 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =206
+            Items: |-
+                =[
+                "A) Uma interface de usuário no Power Platform "
+                ,
+                "B) Um ambiente de desenvolvimento de plug-ins "
+                ,
+                "C) Um contexto no qual o plug-in é executado "
+                ,
+                "D) Um registro no banco de dados do aplicativo "
+                ]
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =403
+            ZIndex: =3
+
+        Button1_58 As button:
+            OnSelect: |-
+                =Reset(Radio1_12)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta19)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =330
+            Y: =690
+            ZIndex: =4
+
+        Button1_59 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_12
+                .Selected.Value=
+                "C) Um contexto no qual o plug-in é executado "
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =330
+            X: =508
+            Y: =690
+            ZIndex: =5
+
+        Button1_60 As button:
+            OnSelect: |-
+                =Reset(Radio1_12)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta21)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =855
+            Y: =690
+            ZIndex: =6
+
+        Label3_19 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="C) Um contexto no qual o plug-in é executado 
+                
+                O contexto de execução de plug-ins no Dataverse refere-se ao ambiente específico em que um plug-in é executado, incluindo informações sobre a operação que disparou o plug-in, os dados do registro afetado e o estado atual do sistema. Esse contexto fornece ao desenvolvedor acesso a detalhes cruciais, como o usuário que executou a ação, as pré-imagens e pós-imagens dos registros, e quaisquer mensagens de erro que possam ter ocorrido. Com essas informações, os desenvolvedores podem implementar lógica de negócios que responda adequadamente ao ambiente em que o plug-in está operando, garantindo que as ações realizadas sejam relevantes e apropriadas."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =416
+            ZIndex: =7
+
+        Icon1_19 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1_12)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

@@ -1,0 +1,145 @@
+pergunta13 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_5 As groupContainer.manualLayoutContainer:
+        Height: =Parent.Height -20 
+        PaddingTop: =
+        Width: =Parent.Width -20
+        X: =10
+        Y: =10
+        ZIndex: =1
+
+        Label2_12 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 13 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =1
+
+        Label1_14 As label:
+            Font: =Font.Arial
+            Height: =305
+            Size: =20
+            Text: ="13) O que é o modelo de objeto da API do Cliente no Power Platform?  "
+            Width: =Parent.Width -30
+            X: =15
+            Y: =73
+            ZIndex: =2
+
+        Radio1_5 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =206
+            Items: |-
+                =[
+                "A) Um modelo que representa a estrutura do banco de dados do aplicativo  "
+                ,
+                "B)  Um modelo que descreve a estrutura de objetos do aplicativo   "
+                ,
+                "C) Um modelo que permite a comunicação com serviços web externos   "
+                ,
+                "D) Um modelo que descreve a estrutura do código do Power Platform   "
+                ]
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =403
+            ZIndex: =3
+
+        Button1_37 As button:
+            OnSelect: |-
+                =Reset(Radio1_5)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta12)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =330
+            Y: =690
+            ZIndex: =4
+
+        Button1_38 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_5
+                .Selected.Value=
+                "B)  Um modelo que descreve a estrutura de objetos do aplicativo   "
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =330
+            X: =508
+            Y: =690
+            ZIndex: =5
+
+        Button1_39 As button:
+            OnSelect: |-
+                =Reset(Radio1_5)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta14)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =855
+            Y: =690
+            ZIndex: =6
+
+        Label3_12 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="B) Um modelo que descreve a estrutura de objetos do aplicativo
+                
+                O modelo de objeto da API do Cliente no Power Platform fornece uma representação estruturada dos diversos objetos, entidades e suas relações dentro do ambiente do Dataverse. Ele permite que desenvolvedores interajam de maneira programática com esses objetos, facilitando a criação, leitura, atualização e exclusão de dados. Este modelo é fundamental para a construção de aplicativos e soluções, pois abstrai a complexidade do banco de dados subjacente, permitindo que os desenvolvedores manipulem dados de maneira intuitiva e eficiente, com foco na lógica de negócios e na funcionalidade do aplicativo."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =416
+            ZIndex: =7
+
+        Icon1_12 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1_5)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

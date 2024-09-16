@@ -1,0 +1,145 @@
+pergunta12 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_4 As groupContainer.manualLayoutContainer:
+        Height: =Parent.Height -20 
+        PaddingTop: =
+        Width: =Parent.Width -20
+        X: =10
+        Y: =10
+        ZIndex: =1
+
+        Label2_11 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 12 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =1
+
+        Label1_13 As label:
+            Font: =Font.Arial
+            Height: =305
+            Size: =20
+            Text: ="12) Como você pode executar operações em plug-ins do Dataverse usando o serviço Organização no Power Platform?  "
+            Width: =Parent.Width -30
+            X: =15
+            Y: =73
+            ZIndex: =2
+
+        Radio1_4 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =206
+            Items: |-
+                =[
+                "A) Usando apenas código C#  "
+                ,
+                "B)  Usando o serviço Organização fornecido pelo Power Platform  "
+                ,
+                "C) Não é possível executar operações em plug-ins usando o serviço Organização  "
+                ,
+                "D) Usando apenas código JavaScript  "
+                ]
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =403
+            ZIndex: =3
+
+        Button1_34 As button:
+            OnSelect: |-
+                =Reset(Radio1_4)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta11)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =330
+            Y: =690
+            ZIndex: =4
+
+        Button1_35 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_4
+                .Selected.Value=
+                "B)  Usando o serviço Organização fornecido pelo Power Platform  "
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =330
+            X: =508
+            Y: =690
+            ZIndex: =5
+
+        Button1_36 As button:
+            OnSelect: |-
+                =Reset(Radio1_4)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta13)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =855
+            Y: =690
+            ZIndex: =6
+
+        Label3_11 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="B)  Usando o serviço Organização fornecido pelo Power Platform  
+                
+                O serviço Organização do Power Platform permite que desenvolvedores interajam com o Dataverse para executar operações em plug-ins, como criar, atualizar ou excluir registros. Esse serviço fornece uma interface robusta para comunicação com a camada de dados do Dataverse, facilitando a execução de lógicas de negócios implementadas em plug-ins. Embora o código C# e JavaScript possam ser usados em diferentes contextos, a interação direta com plug-ins é realizada através do serviço Organização, que abstrai a complexidade da comunicação e fornece um conjunto de operações integradas para manipulação de dados."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =416
+            ZIndex: =7
+
+        Icon1_11 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1_4)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

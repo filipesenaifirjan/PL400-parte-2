@@ -1,0 +1,174 @@
+pergunta4 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_checkbox:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container2_2 As groupContainer.manualLayoutContainer:
+        Height: =Parent.Height-20
+        Width: =Parent.Width-20
+        X: =10
+        Y: =10
+        ZIndex: =1
+
+        Label1_5 As label:
+            Font: =Font.Arial
+            Height: =227
+            Size: =20
+            Text: |-
+                ="4) Desenvolva uma integração para sincronizar contas com um sistema interno. Você ativa o controle de alterações para o ambiente e para a tabela da contas.
+                Você precisa obter as alterações mais recentes.
+                Quais são as duas ações que você deve executar? Cada resposta correta apresenta uma parte da solução."
+            Width: =Parent.Width-30
+            X: =15
+            Y: =50
+            ZIndex: =1
+
+        Label2_3 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 4 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =2
+
+        Button1_10 As button:
+            OnSelect: |-
+                =Reset(Checkbox1_8)&&
+                Reset(Checkbox1_9)&&
+                Reset(Checkbox1_10)&&
+                Reset(Checkbox1_11)&&
+                UpdateContext({VarPop_checkbox: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta3)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =330
+            Y: =690
+            ZIndex: =3
+
+        Button1_11 As button:
+            OnSelect: |-
+                =If
+                (
+                Checkbox1_8.Value And Checkbox1_10.Value
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_checkbox: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_checkbox: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))&&
+                Reset(Checkbox1_8)&&
+                Reset(Checkbox1_9)&&
+                Reset(Checkbox1_10)&&
+                Reset(Checkbox1_11)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =330
+            X: =508
+            Y: =690
+            ZIndex: =4
+
+        Button1_12 As button:
+            OnSelect: |-
+                =Reset(Checkbox1_11)&& Reset(Checkbox1_11)&&
+                UpdateContext({VarPop_checkbox: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta5)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =855
+            Y: =690
+            ZIndex: =5
+
+        Label3_3 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="A) Faça uma solicitação à API Web que inclua somente o cabeçalho odata.track-changes.
+                C) Use o valor deltaLink retornado da primeira solicitação para obter todas as alterações subsequentes.
+                
+                Fazer uma solicitação à API Web que inclui o cabeçalho odata.track-changes só responderá com um deltaLink que pode ser usado para obter alterações subsequentes. A solicitação do deltaLink retornará todas as alterações desde a última solicitação, bem como um novo deltaLink que deve ser usado com a próxima solicitação. Não há suporte para opções de consulta quando o cabeçalho preferencial (odata.track-changes) é usado. Fazer uma solicitação à API Web que inclui a opção orderBy só retornará todas as linhas na tabela da conta e não apenas as alterações mais recentes."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =450
+            ZIndex: =6
+
+        Icon1_3 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_checkbox: true})
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =7
+
+        Checkbox1_8 As checkbox:
+            Text: |
+                ="A)  Faça uma solicitação à API Web que inclua somente o cabeçalho odata.track-changes."
+            Visible: =VarPop_checkbox
+            Width: =1000
+            X: =30
+            Y: =300
+            ZIndex: =8
+
+        Checkbox1_9 As checkbox:
+            Text: |+
+                ="B) Faça uma solicitação à API Web que inclua o cabeçalho odata.track-changes e a opção de consulta orderBy."
+                
+            Visible: |
+                =VarPop_checkbox
+            Width: =1000
+            X: =30
+            Y: =360
+            ZIndex: =9
+
+        Checkbox1_10 As checkbox:
+            Text: |
+                ="C) Use o valor deltaLink retornado da primeira solicitação para obter todas as alterações subsequentes."
+            Visible: |
+                =VarPop_checkbox
+            Width: =1000
+            X: =30
+            Y: =420
+            ZIndex: =10
+
+        Checkbox1_11 As checkbox:
+            Text: |
+                ="D) Faça uma solicitação à API Web que inclua somente a opção orderBy."
+            Visible: |
+                =VarPop_checkbox
+            Width: =1000
+            X: =30
+            Y: =480
+            ZIndex: =11
+

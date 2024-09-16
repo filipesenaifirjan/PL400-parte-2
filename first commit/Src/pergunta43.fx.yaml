@@ -1,0 +1,149 @@
+pergunta43 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_35 As groupContainer.manualLayoutContainer:
+        Height: =Parent.Height -20 
+        PaddingTop: =
+        Width: =Parent.Width -20
+        X: =10
+        Y: =10
+        ZIndex: =1
+
+        Label2_42 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 43 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =1
+
+        Label1_44 As label:
+            Font: =Font.Arial
+            Height: =280
+            Size: =20
+            Text: |-
+                ="43) Uma empresa planeja criar um aplicativo de processamento de pedidos. Quando os pedidos são criados, o aplicativo executa uma lógica de negócios complexa e se integra a vários sistemas externos.
+                Os pedidos com um grande número de itens de linha podem levar até seis minutos para serem concluídos. O processamento de cada pedido deve ser concluído em uma operação para evitar deixar registros em um estado incompleto.
+                Você precisa recomendar uma solução para a empresa.
+                O que você deve recomendar?"
+            Width: =Parent.Width -30
+            X: =15
+            Y: =57
+            ZIndex: =2
+
+        Radio1_35 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =206
+            Items: |-
+                =[
+                "A) Um fluxo de trabalho assíncrono que usa uma atividade de fluxo de trabalho personalizada "
+                ,
+                "B) Um fluxo de trabalho em tempo real que usa uma ação personalizada "
+                ,
+                "C) um webhook que se conecta a uma função do Azure "
+                ,
+                "D) Um plug-in assíncrono "
+                ]
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =387
+            ZIndex: =3
+
+        Button1_127 As button:
+            OnSelect: |-
+                =Reset(Radio1_35)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta42)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =330
+            Y: =690
+            ZIndex: =4
+
+        Button1_128 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_35
+                .Selected.Value=
+                "B) Um fluxo de trabalho em tempo real que usa uma ação personalizada "
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =330
+            X: =508
+            Y: =690
+            ZIndex: =5
+
+        Button1_129 As button:
+            OnSelect: |-
+                =Reset(Radio1_35)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta44)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =855
+            Y: =690
+            ZIndex: =6
+
+        Label3_42 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="D) Ações que manipulam exceções e erros 
+                
+                No contexto do Power Automate, as ações de controle de fluxo, incluindo o tratamento de erros, são fundamentais para gerenciar como um fluxo se comporta em face de exceções e falhas. Essas ações permitem que os desenvolvedores especifiquem o que deve acontecer quando um erro ocorre, como a execução de um caminho alternativo, envio de notificações ou registro de informações de erro. Isso melhora a robustez e a confiabilidade dos fluxos, garantindo que as operações possam continuar ou serem tratadas de maneira adequada, mesmo diante de problemas inesperados.."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_42 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1_35)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+

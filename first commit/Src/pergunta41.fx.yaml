@@ -1,0 +1,149 @@
+pergunta41 As screen:
+    OnVisible: |-
+        =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
+
+    Container1_33 As groupContainer.manualLayoutContainer:
+        Height: =Parent.Height -20 
+        PaddingTop: =
+        Width: =Parent.Width -20
+        X: =10
+        Y: =10
+        ZIndex: =1
+
+        Label2_40 As label:
+            Font: =Font.Arial
+            Height: =44
+            Size: =20
+            Text: ="Pergunta 41 de 50"
+            Width: =288
+            X: =15
+            Y: =15
+            ZIndex: =1
+
+        Label1_42 As label:
+            Font: =Font.Arial
+            Height: =280
+            Size: =20
+            Text: |-
+                ="41) Você tem uma entidade do Microsoft Dataverse e um aplicativo baseado em modelo. O aplicativo baseado em modelo se integra a um sistema externo.
+                Você planeja executar a lógica de negócios sempre que o aplicativo baseado em modelo criar um registro. A execução da lógica de negócios não deve afetar negativamente os usuários de aplicativos baseados em modelo.
+                Você precisa implementar a lógica de negócios.
+                O que você deve usar?"
+            Width: =Parent.Width -30
+            X: =15
+            Y: =57
+            ZIndex: =2
+
+        Radio1_33 As radio:
+            FontWeight: =FontWeight.Semibold
+            Height: =206
+            Items: |-
+                =[
+                "A) Usando apenas código JavaScript "
+                ,
+                "B) Plug-in síncrono registrado no estágio de pré-operação "
+                ,
+                "C) Fluxo de trabalho síncrono "
+                ,
+                "D)Plug-in assíncrono registrado no estágio PostOperation"
+                ]
+            Visible: =VarPop_RespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =387
+            ZIndex: =3
+
+        Button1_121 As button:
+            OnSelect: |-
+                =Reset(Radio1_33)&&
+                UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta40)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="<  Voltar"
+            X: =330
+            Y: =690
+            ZIndex: =4
+
+        Button1_122 As button:
+            OnSelect: |-
+                =If
+                (
+                Radio1_33
+                .Selected.Value=
+                "D)Plug-in assíncrono registrado no estágio PostOperation"
+                ,
+                Notify
+                (
+                "Certa resposta!"
+                ,
+                NotificationType
+                .Success,
+                1900
+                ) And 
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}) ,
+                Notify
+                (
+                "Resposta Errada!"
+                ,
+                NotificationType
+                .Error,
+                1900
+                ) And
+                UpdateContext
+                ({VarPop_RespostaCorreta: false}) And
+                UpdateContext
+                ({VarPop_VerRespostaCorreta: true}))
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Verificar sua resposta"
+            Width: =330
+            X: =508
+            Y: =690
+            ZIndex: =5
+
+        Button1_123 As button:
+            OnSelect: |-
+                =Reset(Radio1_33)&&
+                UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
+                Navigate(pergunta42)
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: ="Avançar >"
+            X: =855
+            Y: =690
+            ZIndex: =6
+
+        Label3_40 As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =183
+            Text: |-
+                ="D)Plug-in assíncrono registrado no estágio PostOperation
+                
+                No contexto do Power Automate, as ações de controle de fluxo, incluindo o tratamento de erros, são fundamentais para gerenciar como O serviço assíncrono executa operações de longa duração de forma independente da operação principal do núcleo do Microsoft Dataverse. Isso resulta em uma melhoria no desempenho geral do sistema e em uma melhor escalabilidade."
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =Parent.Width-30
+            X: =15
+            Y: =400
+            ZIndex: =7
+
+        Icon1_40 As icon.Cancel:
+            Height: =40
+            Icon: =Icon.Cancel
+            OnSelect: |-
+                =UpdateContext({VarPop_VerRespostaCorreta: false})&& UpdateContext({VarPop_RespostaCorreta: true})&& Reset(Radio1_33)
+            Visible: =VarPop_VerRespostaCorreta
+            Width: =40
+            X: =1291
+            Y: =400
+            ZIndex: =8
+
