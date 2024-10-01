@@ -1,4 +1,5 @@
 pergunta6 As screen:
+    Fill: =textColor
     OnVisible: |-
         =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
 
@@ -11,6 +12,7 @@ pergunta6 As screen:
         ZIndex: =1
 
         Label2_5 As label:
+            Color: =bgColor
             Font: =Font.Arial
             Height: =44
             Size: =20
@@ -21,6 +23,7 @@ pergunta6 As screen:
             ZIndex: =1
 
         Label1_7 As label:
+            Color: =bgColor
             Font: =Font.Arial
             Height: =239
             Size: =20
@@ -34,6 +37,7 @@ pergunta6 As screen:
             ZIndex: =2
 
         Radio1_2 As radio:
+            Color: =bgColor
             FontWeight: =FontWeight.Semibold
             Height: =206
             Items: |-
@@ -145,4 +149,52 @@ pergunta6 As screen:
             X: =1291
             Y: =400
             ZIndex: =8
+
+        Button4_18 As button:
+            Align: =Align.Left
+            BorderThickness: =0
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(0, 0, 0, 1)
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =38
+            HoverBorderColor: =
+            HoverColor: =
+            HoverFill: =
+            OnSelect: |
+                =Set(IsBlack, !IsBlack);
+                //If(IsBlack, Set(bgcolor, Color.Black), Set(bgcolor, Color.White))
+                If(IsBlack, 
+                    Set(bgColor, Color.White); 
+                    Set(textColor, Color.Black), 
+                    Set(bgColor, Color.Black); Set(textColor, Color.White)
+                )
+            PressedColor: =RGBA(0, 0, 0, 1)
+            PressedFill: =
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: =If(IsBlack, "White","Black")
+            Width: =111
+            X: =1220
+            Y: =690
+            ZIndex: =9
+
+        Icon4_17 As icon.Add:
+            Color: =//bgColor
+            Height: =36
+            Icon: =Icon.HalfFilledCircle
+            OnSelect: |-
+                =Set(IsBlack, !IsBlack);
+                //If(IsBlack, Set(bgcolor, Color.Black), Set(bgcolor, Color.White))
+                If(IsBlack, 
+                    Set(bgColor, Color.White); Set(textColor, Color.Black), 
+                    Set(bgColor, Color.Black); Set(textColor, Color.White)
+                )
+            Rotation: =If(IsBlack, 180,0)
+            Width: =36
+            X: =1295
+            Y: =694
+            ZIndex: =10
 

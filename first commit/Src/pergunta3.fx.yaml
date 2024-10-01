@@ -1,4 +1,5 @@
 pergunta3 As screen:
+    Fill: =textColor
     OnVisible: |-
         =UpdateContext({VarPop_checkbox:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
 
@@ -10,6 +11,7 @@ pergunta3 As screen:
         ZIndex: =1
 
         Label1_4 As label:
+            Color: =bgColor
             Font: =Font.Arial
             Height: =269
             Size: =20
@@ -24,6 +26,7 @@ pergunta3 As screen:
             ZIndex: =1
 
         Label2_2 As label:
+            Color: =bgColor
             Font: =Font.Arial
             Height: =44
             Size: =20
@@ -135,6 +138,7 @@ pergunta3 As screen:
             ZIndex: =7
 
         Checkbox1_4 As checkbox:
+            Color: =bgColor
             Text: |
                 ="Use as colunas."
             Visible: =VarPop_checkbox
@@ -144,6 +148,7 @@ pergunta3 As screen:
             ZIndex: =8
 
         Checkbox1_5 As checkbox:
+            Color: =bgColor
             Text: |+
                 =" Use uma API Web para carregar as colunas."
                 
@@ -155,6 +160,7 @@ pergunta3 As screen:
             ZIndex: =9
 
         Checkbox1_6 As checkbox:
+            Color: =bgColor
             Text: |
                 ="Adicione as colunas ao manifesto e deixe a estrutura buscar os valores."
             Visible: |
@@ -165,6 +171,7 @@ pergunta3 As screen:
             ZIndex: =10
 
         Checkbox1_7 As checkbox:
+            Color: =bgColor
             Text: |
                 ="Adicione propriedades ao manifesto e associe os campos correspondentes. "
             Visible: |
@@ -173,4 +180,52 @@ pergunta3 As screen:
             X: =30
             Y: =480
             ZIndex: =11
+
+        Button4_15 As button:
+            Align: =Align.Left
+            BorderThickness: =0
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(0, 0, 0, 1)
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =38
+            HoverBorderColor: =
+            HoverColor: =
+            HoverFill: =
+            OnSelect: |
+                =Set(IsBlack, !IsBlack);
+                //If(IsBlack, Set(bgcolor, Color.Black), Set(bgcolor, Color.White))
+                If(IsBlack, 
+                    Set(bgColor, Color.White); 
+                    Set(textColor, Color.Black), 
+                    Set(bgColor, Color.Black); Set(textColor, Color.White)
+                )
+            PressedColor: =RGBA(0, 0, 0, 1)
+            PressedFill: =
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: =If(IsBlack, "White","Black")
+            Width: =111
+            X: =1220
+            Y: =690
+            ZIndex: =12
+
+        Icon4_14 As icon.Add:
+            Color: =//bgColor
+            Height: =36
+            Icon: =Icon.HalfFilledCircle
+            OnSelect: |-
+                =Set(IsBlack, !IsBlack);
+                //If(IsBlack, Set(bgcolor, Color.Black), Set(bgcolor, Color.White))
+                If(IsBlack, 
+                    Set(bgColor, Color.White); Set(textColor, Color.Black), 
+                    Set(bgColor, Color.Black); Set(textColor, Color.White)
+                )
+            Rotation: =If(IsBlack, 180,0)
+            Width: =36
+            X: =1295
+            Y: =694
+            ZIndex: =13
 
