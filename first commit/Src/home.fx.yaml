@@ -1,7 +1,9 @@
 home As screen:
+    Fill: =textColor
 
     Label1 As label:
         Align: =Align.Center
+        Color: =bgColor
         Height: =130
         Size: =40
         Text: ="Guia de estudos PL400"
@@ -11,6 +13,7 @@ home As screen:
 
     Label1_1 As label:
         Align: =Align.Center
+        Color: =bgColor
         Height: =123
         Size: =40
         Text: =" Parte 2"
@@ -37,4 +40,52 @@ home As screen:
         Width: =204
         X: =1161
         ZIndex: =4
+
+    Button4_12 As button:
+        Align: =Align.Left
+        BorderThickness: =0
+        Color: =RGBA(0, 0, 0, 1)
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledColor: =RGBA(0, 0, 0, 1)
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =38
+        HoverBorderColor: =
+        HoverColor: =
+        HoverFill: =
+        OnSelect: |
+            =Set(IsBlack, !IsBlack);
+            //If(IsBlack, Set(bgcolor, Color.Black), Set(bgcolor, Color.White))
+            If(IsBlack, 
+                Set(bgColor, Color.White); 
+                Set(textColor, Color.Black), 
+                Set(bgColor, Color.Black); Set(textColor, Color.White)
+            )
+        PressedColor: =RGBA(0, 0, 0, 1)
+        PressedFill: =
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =0
+        RadiusTopRight: =0
+        Text: =If(IsBlack, "White","Black")
+        Width: =111
+        X: =1242
+        Y: =714
+        ZIndex: =6
+
+    Icon4_11 As icon.Add:
+        Color: =//bgColor
+        Height: =36
+        Icon: =Icon.HalfFilledCircle
+        OnSelect: |-
+            =Set(IsBlack, !IsBlack);
+            //If(IsBlack, Set(bgcolor, Color.Black), Set(bgcolor, Color.White))
+            If(IsBlack, 
+                Set(bgColor, Color.White); Set(textColor, Color.Black), 
+                Set(bgColor, Color.Black); Set(textColor, Color.White)
+            )
+        Rotation: =If(IsBlack, 180,0)
+        Width: =36
+        X: =1317
+        Y: =718
+        ZIndex: =7
 

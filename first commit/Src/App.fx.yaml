@@ -1,6 +1,9 @@
 App As appinfo:
     BackEnabled: =true
-    OnStart: =
+    OnStart: |
+        =Set(IsBlack, false);
+        Set(bgColor, Color.Black);
+        Set(textColor, Color.White);
     StartScreen: =
     Theme: =PowerAppsTheme
 
