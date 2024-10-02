@@ -1,4 +1,5 @@
 pergunta29 As screen:
+    Fill: =textColor
     OnVisible: |-
         =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
 
@@ -11,6 +12,7 @@ pergunta29 As screen:
         ZIndex: =1
 
         Label2_28 As label:
+            Color: =bgColor
             Font: =Font.Arial
             Height: =44
             Size: =20
@@ -21,6 +23,7 @@ pergunta29 As screen:
             ZIndex: =1
 
         Label1_30 As label:
+            Color: =bgColor
             Font: =Font.Arial
             Height: =280
             Size: =20
@@ -31,6 +34,7 @@ pergunta29 As screen:
             ZIndex: =2
 
         Radio1_21 As radio:
+            Color: =bgColor
             FontWeight: =FontWeight.Semibold
             Height: =206
             Items: |-

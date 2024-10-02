@@ -4,6 +4,7 @@ App As appinfo:
         =Set(IsBlack, false);
         Set(bgColor, Color.Black);
         Set(textColor, Color.White);
+        Set(verdet2m, ColorValue("#01a998"))
     StartScreen: =
     Theme: =PowerAppsTheme
 
