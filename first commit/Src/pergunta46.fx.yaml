@@ -53,6 +53,7 @@ pergunta46 As screen:
             ZIndex: =3
 
         Button1_136 As button:
+            Fill: =verdet2m
             OnSelect: |-
                 =Reset(Radio1_38)&&
                 UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
@@ -67,6 +68,7 @@ pergunta46 As screen:
             ZIndex: =4
 
         Button1_137 As button:
+            Fill: =verdet2m
             OnSelect: |-
                 =If
                 (
@@ -109,6 +111,7 @@ pergunta46 As screen:
             ZIndex: =5
 
         Button1_138 As button:
+            Fill: =verdet2m
             OnSelect: |-
                 =Reset(Radio1_38)&&
                 UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
