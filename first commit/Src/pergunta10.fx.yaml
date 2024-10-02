@@ -1,4 +1,5 @@
 pergunta10 As screen:
+    Fill: =textColor
     OnVisible: |-
         =UpdateContext({VarPop_checkbox:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
 
@@ -10,6 +11,7 @@ pergunta10 As screen:
         ZIndex: =1
 
         Label1_11 As label:
+            Color: =bgColor
             Font: =Font.Arial
             Height: =269
             Size: =20
@@ -23,6 +25,7 @@ pergunta10 As screen:
             ZIndex: =1
 
         Label2_9 As label:
+            Color: =bgColor
             Font: =Font.Arial
             Height: =44
             Size: =20
@@ -130,6 +133,7 @@ pergunta10 As screen:
             ZIndex: =7
 
         Checkbox1_24 As checkbox:
+            Color: =bgColor
             Text: |
                 ="A)  Defina a configuração de herança de privilégio do membro do grupo de segurança como Níveis de acesso direto do usuário (Básico) e privilégios de equipe."
             Visible: =VarPop_checkbox
@@ -139,6 +143,7 @@ pergunta10 As screen:
             ZIndex: =8
 
         Checkbox1_25 As checkbox:
+            Color: =bgColor
             Text: |+
                 ="B) Defina a configuração de herança de privilégio do membro do grupo de segurança como Somente privilégios de equipe."
                 
@@ -150,6 +155,7 @@ pergunta10 As screen:
             ZIndex: =9
 
         Checkbox1_26 As checkbox:
+            Color: =bgColor
             Text: |
                 ="C) Defina os privilégios de criação, leitura e gravação para a tabela Contas como Organização."
             Visible: |
@@ -160,6 +166,7 @@ pergunta10 As screen:
             ZIndex: =10
 
         Checkbox1_27 As checkbox:
+            Color: =bgColor
             Text: |
                 ="D) Defina os privilégios Criação, Leitura e Gravação para a tabela Contas como Usuário."
             Visible: |
@@ -170,6 +177,7 @@ pergunta10 As screen:
             ZIndex: =11
 
         Checkbox2_4 As checkbox:
+            Color: =bgColor
             Text: ="E) Defina os privilégios Criação, Leitura e Gravação para a tabela Contato como Usuário."
             Visible: |
                 =VarPop_checkbox
@@ -177,4 +185,52 @@ pergunta10 As screen:
             X: =30
             Y: =540
             ZIndex: =12
+
+        Button4_22 As button:
+            Align: =Align.Left
+            BorderThickness: =0
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(0, 0, 0, 1)
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =38
+            HoverBorderColor: =
+            HoverColor: =
+            HoverFill: =
+            OnSelect: |
+                =Set(IsBlack, !IsBlack);
+                //If(IsBlack, Set(bgcolor, Color.Black), Set(bgcolor, Color.White))
+                If(IsBlack, 
+                    Set(bgColor, Color.White); 
+                    Set(textColor, Color.Black), 
+                    Set(bgColor, Color.Black); Set(textColor, Color.White)
+                )
+            PressedColor: =RGBA(0, 0, 0, 1)
+            PressedFill: =
+            RadiusBottomLeft: =0
+            RadiusBottomRight: =0
+            RadiusTopLeft: =0
+            RadiusTopRight: =0
+            Text: =If(IsBlack, "White","Black")
+            Width: =111
+            X: =1220
+            Y: =690
+            ZIndex: =13
+
+        Icon4_21 As icon.Add:
+            Color: =//bgColor
+            Height: =36
+            Icon: =Icon.HalfFilledCircle
+            OnSelect: |-
+                =Set(IsBlack, !IsBlack);
+                //If(IsBlack, Set(bgcolor, Color.Black), Set(bgcolor, Color.White))
+                If(IsBlack, 
+                    Set(bgColor, Color.White); Set(textColor, Color.Black), 
+                    Set(bgColor, Color.Black); Set(textColor, Color.White)
+                )
+            Rotation: =If(IsBlack, 180,0)
+            Width: =36
+            X: =1295
+            Y: =694
+            ZIndex: =14
 
