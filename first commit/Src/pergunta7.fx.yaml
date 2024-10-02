@@ -36,6 +36,7 @@ pergunta7 As screen:
             ZIndex: =2
 
         Button1_19 As button:
+            Fill: =RGBA(1, 169, 152, 1)
             OnSelect: |-
                 =Reset(Checkbox1_12)&&
                 Reset(Checkbox1_13)&&
@@ -53,6 +54,7 @@ pergunta7 As screen:
             ZIndex: =3
 
         Button1_20 As button:
+            Fill: =RGBA(1, 169, 152, 1)
             OnSelect: |-
                 =If
                 (
@@ -99,6 +101,7 @@ pergunta7 As screen:
             ZIndex: =4
 
         Button1_21 As button:
+            Fill: =RGBA(1, 169, 152, 1)
             OnSelect: |-
                 =Reset(Checkbox1_15)&& Reset(Checkbox1_15)&&
                 UpdateContext({VarPop_checkbox: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&

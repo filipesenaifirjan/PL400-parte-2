@@ -54,6 +54,7 @@ pergunta12 As screen:
             ZIndex: =3
 
         Button1_34 As button:
+            Fill: =RGBA(1, 169, 152, 1)
             OnSelect: |-
                 =Reset(Radio1_4)&&
                 UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
@@ -68,6 +69,7 @@ pergunta12 As screen:
             ZIndex: =4
 
         Button1_35 As button:
+            Fill: =RGBA(1, 169, 152, 1)
             OnSelect: |-
                 =If
                 (
@@ -110,6 +112,7 @@ pergunta12 As screen:
             ZIndex: =5
 
         Button1_36 As button:
+            Fill: =RGBA(1, 169, 152, 1)
             OnSelect: |-
                 =Reset(Radio1_4)&&
                 UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&

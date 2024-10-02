@@ -1,4 +1,5 @@
 pergunta17 As screen:
+    Fill: =textColor
     OnVisible: |-
         =UpdateContext({VarPop_RespostaCorreta:true})&& UpdateContext({VarPop_VerRespostaCorreta: false})
 
@@ -11,26 +12,29 @@ pergunta17 As screen:
         ZIndex: =1
 
         Label2_16 As label:
+            Color: =bgColor
             Font: =Font.Arial
             Height: =44
             Size: =20
             Text: ="Pergunta 17 de 50"
             Width: =288
             X: =15
-            Y: =15
+            Y: =5
             ZIndex: =1
 
         Label1_18 As label:
+            Color: =bgColor
             Font: =Font.Arial
             Height: =280
             Size: =20
             Text: ="17) O que são pré-imagens e pós-imagens no contexto de plug-ins do Dataverse no Power Platform? "
             Width: =Parent.Width -30
             X: =15
-            Y: =73
+            Y: =63
             ZIndex: =2
 
         Radio1_9 As radio:
+            Color: =bgColor
             FontWeight: =FontWeight.Semibold
             Height: =206
             Items: |-
@@ -46,10 +50,11 @@ pergunta17 As screen:
             Visible: =VarPop_RespostaCorreta
             Width: =Parent.Width-30
             X: =15
-            Y: =403
+            Y: =393
             ZIndex: =3
 
         Button1_49 As button:
+            Fill: =RGBA(1, 169, 152, 1)
             OnSelect: |-
                 =Reset(Radio1_9)&&
                 UpdateContext({VarPop_RespostaCorreta: true}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
@@ -64,6 +69,7 @@ pergunta17 As screen:
             ZIndex: =4
 
         Button1_50 As button:
+            Fill: =RGBA(1, 169, 152, 1)
             OnSelect: |-
                 =If
                 (
@@ -106,6 +112,7 @@ pergunta17 As screen:
             ZIndex: =5
 
         Button1_51 As button:
+            Fill: =RGBA(1, 169, 152, 1)
             OnSelect: |-
                 =Reset(Radio1_9)&&
                 UpdateContext({VarPop_RespostaCorreta: false}) And UpdateContext({VarPop_VerRespostaCorreta: false})&&
